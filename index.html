@@ -10,14 +10,19 @@
         <script src="https://opentdb.com/api.php?amount=10&type=booleanJ"></script>
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     </head>
-    <body>
-        <div id="todo">
+    <body class="bg-primary">
+        <div class="container text-center pt-5 bg-primary" id="todo">
+            <h1>{{title}}</h1>
             <input type="text" class="nes-input" placeholder="Add Item" v-on:keyup.enter="addTask">
-            <ul>
+            <ul style="list-style-type: none">
                 <li v-for="task in tasks" class="flex">
-                    {{task.text}}
-                    <div class="space"></div>
-                    <button class="nes-btn is-error padding" v-on:click="removeTask(task.id)">X</button>
+                    <label>
+                        <input type="checkbox" class="nes-checkbox" v-on:click="check(task)" v-bind:checked="task.done">
+                        <span>&nbsp</span>
+                      </label>
+                    <del v-if="task.done">{{task.text}}</del>></del>
+                    <span v-else>{{task.text}}</span>
+                    <button class="nes-btn is-error" v-on:click="removeTask(task.id)">X</button>
                 </li>
             </ul>
         </div>     

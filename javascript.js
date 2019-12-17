@@ -1,7 +1,7 @@
 var vm = new Vue ({
     el: "#todo",
     data: {
-        title: 'ToDo',
+        title: 'ToDo List',
         tasks: [
 
         ]
@@ -14,6 +14,9 @@ var vm = new Vue ({
         },
         removeTask(id) {
             this.tasks = this.tasks.filter(task => task.id !== id)
+        },
+        check(task) {
+            task.done = !task.done
         }
     }
 })
